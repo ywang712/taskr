@@ -1,4 +1,9 @@
 class TasksController < ApplicationController
+	
+	def index
+		@tasks = Task.all
+	end
+
 	def new
 		@task = Task.new
 	end
@@ -19,7 +24,7 @@ class TasksController < ApplicationController
 
 	def update
 		@task = Task.find(params[:id])
-		if @task.update(task_params)
+		if @task.update(tasks_params)
 			flash[:notice] = "Task was successfully updated"
 			redirect_to task_path(@task)
 		else
